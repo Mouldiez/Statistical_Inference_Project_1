@@ -41,6 +41,7 @@ var(toss)
 mean(roll)
 var(roll)
 
-var(toss, roll) #covariance
+var(toss, roll) #covariance 
+#not exactly the same as the theoretical values from part a but close.
 
 
