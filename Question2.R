@@ -21,3 +21,55 @@ ppois(q = 4, lambda = 8, lower.tail = FALSE)
 sum(dpois(x = 3:8, lambda = 8))
 #check:
 1 - ppois(q = 8, lambda = 8, lower.tail = FALSE) - ppois(q = 2, lambda = 8, lower.tail = TRUE)
+
+
+#Part b 
+#i)
+#create objects for both distributions
+poisson3 <- rpois(n = 10000, lambda = 3)
+poisson5 <- rpois(n = 10000, lambda = 5)
+  
+x <- sample(poisson3, size = 10000, replace = TRUE)
+xresults <- data.frame(x)
+View(xresults)
+
+y <- sample(poisson5, size = 10000, replace = TRUE)
+yresults <- data.frame(y)
+View(yresults)
+
+poissondist <- function() {
+  data.frame(x, y)
+}
+
+results <- poissondist()
+View(results)
+
+#ii)
+#relative frequency histogram for x nd y respectively
+xhist <- hist(x, freq = FALSE,
+     main = "Relative frequency histogram of X",
+     xlab = "x",
+     ylab = "frequency",
+     col = "purple")
+
+points(dpois(0:10000, x = 0:10000, lambda = 3), col = "black")
+xpmf <- dpois(x = 0:10000, lambda = 3)
+head(xpmf)
+
+
+yhist <- hist(y, freq = FALSE,
+     main = "Relative frequency histogram of Y",
+     xlab = "y",
+     ylab = "frequency",
+     col = "pink")
+
+points(dpois(0:10000, x = 0:10000, lambda = 5), col = "black")
+ypmf <- dpois(x = 0:10000, lambda = 5)
+head(ypmf)
+
+#plot both x and y on the same axis
+plot(0:10000, xpmf, col = "purple", xlim =c(0, 20))
+points(0:10000, ypmf, col = "pink")
+
+plot(0:10000, xhist, col = "purple", xlim = c(0, 20))
+points(0:10000, yhist, col = "pink")
