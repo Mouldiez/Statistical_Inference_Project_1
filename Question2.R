@@ -68,8 +68,6 @@ ypmf <- dpois(x = 0:10000, lambda = 5)
 head(ypmf)
 
 #plot both x and y on the same axis
-plot(0:10000, xpmf, col = "purple", xlim =c(0, 20))
-points(0:10000, ypmf, col = "pink")
-
-plot(0:10000, xhist, col = "purple", xlim = c(0, 20))
-points(0:10000, yhist, col = "pink")
+plot(0:10000, xpmf, col = "purple", xlim =c(0, 20),pch = 19, xlab = "distributions", ylab = "probabilities")
+points(0:10000, ypmf, col = "pink", pch = 19)
+legend("topright",c("poisson(3)", "poisson(5)"),pch = c(19, 19), col = c("purple", "pink"))
