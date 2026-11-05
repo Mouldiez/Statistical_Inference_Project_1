@@ -45,14 +45,14 @@ results <- poissondist()
 View(results)
 
 #ii)
-#relative frequency histogram for x nd y respectively
+#relative frequency histogram for x and y respectively
 xhist <- hist(x, freq = FALSE,
      main = "Relative frequency histogram of X",
      xlab = "x",
      ylab = "frequency",
      col = "purple")
 
-points(dpois(0:10000, x = 0:10000, lambda = 3), col = "black")
+points(dpois(0:10000, x = 0:10000, lambda = 3), pch = 19, col = "black")
 xpmf <- dpois(x = 0:10000, lambda = 3)
 head(xpmf)
 
@@ -63,11 +63,30 @@ yhist <- hist(y, freq = FALSE,
      ylab = "frequency",
      col = "pink")
 
-points(dpois(0:10000, x = 0:10000, lambda = 5), col = "black")
+points(dpois(0:10000, x = 0:10000, lambda = 5),pch =19, col = "black")
 ypmf <- dpois(x = 0:10000, lambda = 5)
 head(ypmf)
 
-#plot both x and y on the same axis
-plot(0:10000, xpmf, col = "purple", xlim =c(0, 20),pch = 19, xlab = "distributions", ylab = "probabilities")
+#plot both x and y pmf on the same axis
+plot(0:10000, xpmf, col = "purple", xlim =c(0, 20),pch = 19, xlab = "distributions", main = "x,y pmf",ylab = "probabilities")
 points(0:10000, ypmf, col = "pink", pch = 19)
 legend("topright",c("poisson(3)", "poisson(5)"),pch = c(19, 19), col = c("purple", "pink"))
+
+
+#iii
+#adding x and y. from part a, POI(3 +5) = POI(8) so lambda = mean = var = 8
+z = x + y
+mean(z)
+var(z)
+
+
+#iv 
+#plotting empirical and theoretical cumulative dist. function
+empiricalcdf <- ecdf(z)
+plot(empiricalcdf, col = "blue", xlab = "z", ylab = "Fn(z)")
+lines(seq(0, 20, by=1), ppois(seq(0, 20, by=1),lambda = 8),col="green")
+legend("topleft",c("empirical", "theoretical"),pch = c(19, 19), col = c("blue", "green"))
+#both plots are very close, they overlap
+#check both plots aren't identical: 
+empiricalcdf(5)
+ppois(5, lambda = 8)
