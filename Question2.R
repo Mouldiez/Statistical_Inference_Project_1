@@ -90,3 +90,11 @@ legend("topleft",c("empirical", "theoretical"),pch = c(19, 19), col = c("blue", 
 #check both plots aren't identical: 
 empiricalcdf(5)
 ppois(5, lambda = 8)
+
+
+#v
+#using empirical cdf to calculate P(3<= z <= 8) from part a
+empiricalcdf(8) - empiricalcdf(3)
+#cumulative add everything below the 8. same with 3. so minus ecdf(3) from ecdf(8) to get rid of overlap
+#check the theoretical
+sum(dpois(x = 3:8, lambda = 8))
