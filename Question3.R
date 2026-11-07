@@ -18,7 +18,7 @@ sum(s)
 mean(s)
 var(s)
 
-#iv plot empirical density histogram of s and compare to theoretical densoty function
+#iv plot empirical density histogram of s and compare to theoretical densIty function
 hist(s, freq = FALSE, col = "purple")
 points(pchisq(10000, df = 20), pch =19, col = "black")
 #legend("topleft", ("empirical","theoretical"))
@@ -26,6 +26,15 @@ points(pchisq(10000, df = 20), pch =19, col = "black")
 
 
 
+
+
+
+
+
 #v
 empirical_s <- ecdf(s)
-empirical_s(pchisq(13)) - empirical_s(7)
+#find the empirical of P(7 <= S <= 13)
+empirical_s(13) - empirical_s(7)
+#check against theoretical from part a
+pchisq(13, df = 20, lower.tail = TRUE) - pchisq(7, df = 20, lower.tail = TRUE)
+
