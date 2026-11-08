@@ -44,7 +44,7 @@ for (i in 1:m){
   
 }
 
-hist(meanArray)
+hist(meanArray, freq = FALSE)
 
 
 #c 
@@ -56,7 +56,7 @@ for (i in 1:m){
   meanArray[i] <- mean(b)
   
 }
-hist(meanArray)
+hist(meanArray, freq = FALSE)
 
 
 
@@ -70,4 +70,4 @@ for (i in 1:m){
   meanArray[i] <- mean(b)
   
 }
-hist(meanArray)
+hist(meanArray, freq = FALSE)
